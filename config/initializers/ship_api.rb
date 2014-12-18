@@ -12,7 +12,13 @@ $fedex = FedEx.new(login: ENV["FEDEX_METER"],
                    key: ENV["FEDEX_KEY"],
                    account: ENV["FEDEX_ACCOUNT"],
                    test: true)
-                   
+
+$usps = USPS.new(login: ENV["USPS_LOGIN"])
+
+# $ups = UPS.new(login: 'auntjudy',
+#               password: 'secret',
+#               key: 'xml-access-key')
+
 $origin = Location.new(:country => 'US',
                        :state => 'CA',
                        :city => 'Beverly Hills',

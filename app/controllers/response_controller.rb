@@ -10,14 +10,16 @@ class ResponseController < ApplicationController
               [15, 15, 4.5],
               :units => :imperial )
 
-    response = $fedex.find_rates($origin, destination, package)
+    fedex_response = $fedex.find_rates($origin, destination, package)
+    usps_response = $usps.find_rates($origin, destination, package)
+    response_rates = fedex_response.rates + usps_response.rates
+    raise
     pretty_response = {}
-
-    response.rates.each do |rate|
+    response_rates.each do |rate|
       pretty_response[rate.service_name] = {
         price: rate.price,
         delivery: rate.delivery_date ? rate.delivery_date.to_date : nil
-        }
+      }
     end
 
     render json: pretty_response
