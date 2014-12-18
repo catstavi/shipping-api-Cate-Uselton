@@ -12,7 +12,7 @@ class ResponseController < ApplicationController
 
     response = $fedex.find_rates($origin, destination, package)
     pretty_response = {}
-    
+
     response.rates.each do |rate|
       pretty_response[rate.service_name] = {
         price: rate.price,
@@ -20,7 +20,6 @@ class ResponseController < ApplicationController
         }
     end
 
-    # sorted_response = response.rates.sort_by(&:price).collect {|rate| [rate.service_name, rate.price]}
     render json: pretty_response
   end
 end
