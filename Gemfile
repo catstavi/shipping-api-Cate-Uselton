@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rspec'
 
-gem 'HTTParty'
+gem 'httparty'
+
+gem 'active_shipping'
+gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
