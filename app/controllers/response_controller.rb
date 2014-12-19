@@ -1,4 +1,6 @@
 class ResponseController < ApplicationController
+  before_filter :new_log
+  after_filter :add_log_response
 
   def rate
     unless complete?
